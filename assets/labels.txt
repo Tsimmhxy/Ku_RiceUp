@@ -1,0 +1,8 @@
+final List<String> labels = [
+  'อีขาวใหญ่',        // i_khao_yai
+  'ขี้งูอีสาน',       // khi_ngu_isan
+  'ขี้ตมหางนาค',     // khi_taem_hang_nak
+  'นางสวน',          // nang_suan
+  'สันป่าตอง',       // niwa_san_pa_ton9
+  'กข6',             // rd6
+];

@@ -1,0 +1,50 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.deploy_model_mobile_app"
+    
+    // 
+    compileSdk = 35 
+    
+    ndkVersion = "26.1.10909125"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.deploy_model_mobile_app"
+        
+        // สำหรับ POCO M6 Pro แนะนำให้ใช้ค่าเริ่มต้นของ Flutter หรือระบุ 21 ขึ้นไป
+        minSdk = flutter.minSdkVersion
+        
+        // แก้ไขเป็น 35 ให้สอดคล้องกับ compileSdk
+        targetSdk = 35 
+        
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+   buildTypes {
+    release {
+        signingConfig signingConfigs.debug
+
+        minifyEnabled false
+        shrinkResources false
+    }
+  }
+}
+
+flutter {
+    source = "../.."
+}
