@@ -23,20 +23,33 @@ class _HomeScreenState extends State<HomeScreen> {
   static const Color riceGold = Color(0xFFD4AF37);
   static const Color cardColor = Color(0xFFFDF9EE);
 
+  // กันกดปุ่มกล้อง/แกลเลอรีซ้ำระหว่างที่กำลังเลือกรูปหรือกำลังเปิดหน้า Preview
+  bool _picking = false;
+
   Future<void> pickImage(ImageSource source) async {
-    final XFile? image = await picker.pickImage(source: source);
+    if (_picking) return;
+    _picking = true;
 
-    if (image == null) return;
-    if (!mounted) return;
+    try {
+      final XFile? image = await picker.pickImage(
+        source: source,
+        maxWidth: 1600, // ลดขนาดรูปจากกล้อง ช่วยให้โหลดและประมวลผลเร็วขึ้น
+        imageQuality: 90,
+      );
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PreviewScreen(
-          image: File(image.path),
+      if (image == null || !mounted) return;
+
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PreviewScreen(
+            image: File(image.path),
+          ),
         ),
-      ),
-    );
+      );
+    } finally {
+      _picking = false;
+    }
   }
 
   Widget buildLanguageButton() {
@@ -211,10 +224,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              // ขยายขนาดโลโก้ข้าว
                               Image.asset(
                                 'assets/images/rice.png',
-                                height: 95, // เดิม 75 ปรับให้ใหญ่ขึ้น
+                                height: 95,
                                 fit: BoxFit.contain,
                                 errorBuilder: (context, error, stackTrace) {
                                   return Container(
@@ -234,11 +246,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // ขยายฟอนต์และเพิ่มเงา
                                   Text(
                                     'KU',
                                     style: TextStyle(
-                                      fontSize: 48, // เดิม 40
+                                      fontSize: 48,
                                       fontWeight: FontWeight.w900,
                                       color: Colors.white,
                                       height: 1.0,
@@ -251,11 +262,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ],
                                     ),
                                   ),
-                                  // ขยายฟอนต์และเพิ่มเงา
                                   Text(
                                     'RiceUp',
                                     style: TextStyle(
-                                      fontSize: 36, // เดิม 30
+                                      fontSize: 36,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                       height: 1.1,
@@ -272,8 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                              height: 24), // เพิ่มระยะห่างให้โลโก้ดูเด่นขึ้น
+                          const SizedBox(height: 24),
 
                           // ข้อความ Subtitle พร้อมเส้นแสงข้างใต้
                           Column(
@@ -294,7 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   gradient: LinearGradient(
                                     colors: [
                                       Colors.white.withOpacity(0.0),
-                                      riceGold, // สีเส้นขีดทอง
+                                      riceGold,
                                       Colors.white.withOpacity(0.0),
                                     ],
                                   ),
@@ -318,7 +327,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             topRight: Radius.circular(30),
                           ),
                         ),
-                        // ใช้ ClipRRect เพื่อไม่ให้รูปรวงข้าวล้นขอบโค้งสีขาวออกมา
                         child: ClipRRect(
                           borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(30),
@@ -326,7 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           child: Stack(
                             children: [
-                              // 1. รวงข้าวฝั่งซ้าย (rice_left.png)
+                              // 1. รวงข้าวฝั่งซ้าย
                               Positioned(
                                 top: 10,
                                 left: -40,
@@ -339,7 +347,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
 
-                              // 2. รวงข้าวฝั่งขวา (rice_right.png)
+                              // 2. รวงข้าวฝั่งขวา
                               Positioned(
                                 top: 0,
                                 right: -40,

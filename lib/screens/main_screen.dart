@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 import '../data/translations.dart';
 import '../models/app_language.dart';
+import '../services/classifier.dart';
+import 'history_screen.dart';
 import 'home_screen.dart';
 import 'knowledge_screen.dart';
-import 'history_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -19,14 +20,21 @@ class _MainScreenState extends State<MainScreen> {
 
   static const Color primaryGreen = Color(0xFF1B5E20);
 
-  // สร้างหน้าเปล่าสำหรับประวัติแปลงไว้ชั่วคราว
-  final List<Widget> _pages = [
-    const HomeScreen(),
-    const HistoryScreen(), // <--- แก้ไขบรรทัดนี้
-    const KnowledgeScreen(),
+  final List<Widget> _pages = const [
+    HomeScreen(),
+    HistoryScreen(),
+    KnowledgeScreen(),
   ];
 
+  @override
+  void initState() {
+    super.initState();
+    // โหลดโมเดลรอไว้ล่วงหน้า (ไม่ต้อง await) เข้าหน้าผลลัพธ์แล้วไม่ต้องรอโหลด
+    Classifier.instance.loadModel().catchError((_) {});
+  }
+
   void _onItemTapped(int index) {
+    if (index == _selectedIndex) return;
     setState(() {
       _selectedIndex = index;
     });
@@ -40,7 +48,11 @@ class _MainScreenState extends State<MainScreen> {
         final lang = AppLanguage.code;
 
         return Scaffold(
-          body: _pages[_selectedIndex],
+          // IndexedStack เก็บสถานะของแต่ละแท็บไว้ ไม่สร้างหน้าใหม่ทุกครั้งที่สลับ
+          body: IndexedStack(
+            index: _selectedIndex,
+            children: _pages,
+          ),
           bottomNavigationBar: Container(
             decoration: BoxDecoration(
               boxShadow: [

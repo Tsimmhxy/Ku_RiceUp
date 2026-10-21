@@ -1,15 +1,18 @@
+// ไฟล์: lib/data/translations.dart
 class T {
   static const Map<String, Map<String, String>> texts = {
     'th': {
       'appTitle': 'KU RiceUp',
       'homeTitle': 'KU RiceUp',
-      'homeSubtitle': 'ยกระดับการจำแนกสายพันธุ์ข้าวเหนียวไทย',
+      'homeSubtitle': 'ยกระดับการจำแนกสายพันธุ์ข้าวเหนียว',
       'camera': 'ถ่ายภาพเมล็ดข้าว',
       'gallery': 'เลือกรูปภาพจากแกลเลอรี',
-      'homeTip': 'คำแนะนำ: ควรถ่ายภาพเมล็ดข้าวให้ชัดเจน\nมีแสงเพียงพอ และพื้นหลังไม่รบกวน',
+      'homeTip':
+          'คำแนะนำ: ควรถ่ายภาพเมล็ดข้าวให้ชัดเจน\nมีแสงเพียงพอ และพื้นหลังไม่รบกวน',
       'previewTitle': 'ตรวจสอบรูปภาพ',
       'selectedImage': 'รูปภาพเมล็ดข้าวที่เลือก',
-      'previewTip': 'ตรวจสอบให้แน่ใจว่าเมล็ดข้าวชัดเจน\nแสงเพียงพอ และไม่มีวัตถุรบกวนภาพ',
+      'previewTip':
+          'ตรวจสอบให้แน่ใจว่าเมล็ดข้าวชัดเจน\nแสงเพียงพอ และไม่มีวัตถุรบกวนภาพ',
       'startClassify': 'เริ่มจำแนกสายพันธุ์',
       'chooseAgain': 'เลือกรูปภาพใหม่',
       'resultTitle': 'ผลการจำแนก',
@@ -27,7 +30,7 @@ class T {
       'classifyAgain': 'จำแนกภาพใหม่',
       'unknownDescription': 'ไม่พบข้อมูลรายละเอียดสายพันธุ์',
       'unableToReadImage': 'ไม่สามารถอ่านรูปภาพได้',
-      
+
       // เมนู
       'navHome': 'หน้าแรก',
       'navHistory': 'ประวัติแปลง',
@@ -36,8 +39,9 @@ class T {
       // ประวัติ
       'historyTitle': 'ประวัติแปลง',
       'historyEmpty': 'ยังไม่มีประวัติการตรวจสอบ',
-      
+
       // หน้าความรู้ (GAP)
+      'detailsTitle': 'รายละเอียด',
       'knowledgeHeader': 'การคัดเลือกและผลิตเมล็ดพันธุ์ข้าวคุณภาพดี',
       'corePrinciples':
           'สรุป 3 หลักสำคัญ:\n1. เริ่มต้นให้ดี: พื้นที่เหมาะสม + เมล็ดพันธุ์คุณภาพ\n2. ป้องกันข้าวปน: หัวใจของคุณภาพเมล็ดพันธุ์\n3. จัดการหลังเก็บเกี่ยวให้ถูกวิธี',
@@ -86,18 +90,20 @@ class T {
       'gap9Desc': 'เก็บในที่อากาศถ่ายเท ป้องกันความชื้น',
       'gap9Full':
           '• สถานที่เก็บต้องสะอาด ระบายอากาศดี ป้องกันความชื้นและสัตว์พาหะ\n• วางกองเมล็ดพันธุ์บนพาเลทและมีช่องว่างให้สุ่มตรวจได้\n• ติดเครื่องหมายกำกับรุ่นเพื่อให้ตรวจสอบย้อนกลับได้\n• แยกพื้นที่เก็บเมล็ดพันธุ์ออกจากที่เก็บปุ๋ยและวัตถุอันตรายเด็ดขาด',
-    
     },
     'en': {
       'appTitle': 'KU RiceUp',
       'homeTitle': 'KU RiceUp',
-      'homeSubtitle': 'Elevating the classification of Thai\nglutinous rice varieties.',
+      'homeSubtitle':
+          'Elevating the classification of\nglutinous rice varieties.',
       'camera': 'Take Rice Image',
       'gallery': 'Choose Image from Gallery',
-      'homeTip': 'Tip: Capture a clear image of rice grains\nwith sufficient lighting and a clean background.',
+      'homeTip':
+          'Tip: Capture a clear image of rice grains\nwith sufficient lighting and a clean background.',
       'previewTitle': 'Image Preview',
       'selectedImage': 'Selected Rice Grain Image',
-      'previewTip': 'Make sure the rice grains are clear,\nwell-lit, and free from distracting objects.',
+      'previewTip':
+          'Make sure the rice grains are clear,\nwell-lit, and free from distracting objects.',
       'startClassify': 'Start Classification',
       'chooseAgain': 'Choose New Image',
       'resultTitle': 'Classification Result',
@@ -115,43 +121,66 @@ class T {
       'classifyAgain': 'Classify New Image',
       'unknownDescription': 'No variety information found.',
       'unableToReadImage': 'Unable to read image',
+
+      // Menu
       'navHome': 'Home',
       'navHistory': 'History',
       'navKnowledge': 'Knowledge',
-      'knowledgeHeader': 'Quality Rice Seed Production',
+
+      // History (เดิมขาดไป ทำให้หน้าประวัติแสดงภาษาไทยเมื่อสลับเป็นอังกฤษ)
+      'historyTitle': 'Inspection History',
+      'historyEmpty': 'No inspection history yet',
+
+      // Knowledge (GAP)
+      'detailsTitle': 'Details',
+      'knowledgeHeader': 'Quality Rice Seed Selection and Production',
       'corePrinciples':
           '3 Core Principles:\n1. Good Start: Proper area + Quality seeds\n2. Prevent Contamination: Heart of seed quality\n3. Proper Post-harvest Management',
-      'gap1Title': '1. Area Selection',
+
+      'gap1Title': 'Area Selection',
       'gap1Desc': 'Fertile soil with same variety history',
       'gap1Full':
-          'Select fields with good irrigation and no contamination risks...',
-      'gap2Title': '2. Soil Preparation',
+          '• Fertile soil that is uniform across the field, holds water well, and allows water to be controlled in and out\n• Choose a field that grew the same variety last season. If the variety is changed, the crop must be transplanted\n• Prepare a field layout, assign plot codes, and keep a record of the plot history\n• Isolation distance: 3 m for broadcast sowing, 1 m for transplanting (or use border rows)',
+
+      'gap2Title': 'Soil Preparation and Planting',
       'gap2Desc': 'Reduce weeds and volunteer rice',
-      'gap2Full': 'Plow and irrigate to control weeds before planting...',
-      'gap3Title': '3. Seed Selection',
-      'gap3Desc': 'Use certified seeds with ≥80% germination',
-      'gap3Full': 'Use foundation or registered seeds from reliable sources...',
-      'gap4Title': '4. Roguing',
-      'gap4Desc': 'Remove off-types across 5 growth stages',
+      'gap2Full':
+          '• Prepare the soil to reduce volunteer rice and weeds: let them germinate, then plow them under 1-3 times before the actual planting\n• Transplanting is recommended because off-type mixing is easier to control than with broadcast sowing\n• Do not replant dead hills using seedlings from other sources\n• Use a suitable seed rate (transplanting 7-10 kg/rai, broadcast sowing 18-24 kg/rai)',
+
+      'gap3Title': 'Seed Selection Before Planting',
+      'gap3Desc': 'Use foundation/registered seed with ≥80% germination',
+      'gap3Full':
+          '• Use foundation or registered class seed from a reliable source\n• Germination must be at least 80%, with no other varieties or weed seeds mixed in\n• Record the source, variety name, quantity, and purchase date every time\n• If using chemically treated seed, follow the instructions strictly',
+
+      'gap4Title': 'Roguing',
+      'gap4Desc': 'Walk the field and remove off-types across 5 stages',
       'gap4Full':
-          'Inspect during seedling, tillering, flowering, bending, and pre-harvest...',
-      'gap5Title': '5. Quality Inspection',
+          'Walk the field and remove off-type plants at 5 stages:\n1. Seedling stage (leaf color, height)\n2. Tillering stage (height, plant shape, red rice)\n3. Flowering stage (panicle color, flowering time)\n4. Panicle bending stage (grain color, awns)\n5. Pre-harvest stage (most important)\n*Standard: no more than 1 plant of another variety per 10,000 plants',
+
+      'gap5Title': 'Seed Quality Inspection',
       'gap5Desc': 'Check purity and impurities',
-      'gap5Full': 'Inspect for physical purity ≥98% and impurities ≤2%...',
-      'gap6Title': '6. Harvesting',
-      'gap6Desc': 'Harvest at 90% maturity',
+      'gap5Full':
+          '• Foundation seed: pure seed ≥98%, impurities ≤2%, other varieties ≤1 grain/1,000 g\n• Registered seed: other varieties ≤15 grains/500 g\n• Certified (for sale) seed: other varieties ≤20 grains/500 g\n• Sample and test seed quality every month and before every sale',
+
+      'gap6Title': 'Harvesting',
+      'gap6Desc': 'Harvest when at least 90% of grains are mature',
       'gap6Full':
-          'Clean harvesting equipment thoroughly to avoid mechanical mixing...',
-      'gap7Title': '7. Drying',
-      'gap7Desc': 'Dry on clean surfaces',
-      'gap7Full': 'Turn the seeds regularly for uniform drying...',
-      'gap8Title': '8. Moisture Reduction',
+          '• Harvest when at least 90% of the grains are mature\n• Clean the harvester, thresher, and transport containers before and after every use\n• If the field borders another variety, do not use the border rows (1 m buffer strip) for seed',
+
+      'gap7Title': 'Drying',
+      'gap7Desc': 'Dry on a clean surface and turn the seed regularly',
+      'gap7Full':
+          '• Clean the drying yard and ground cover before use so that no other varieties contaminate the seed\n• Dry the seed on a dry, clean yard or surface\n• Turn the seed regularly so that it dries evenly',
+
+      'gap8Title': 'Moisture Reduction',
       'gap8Desc': 'Reduce to ≤12% within 24 hours',
-      'gap8Full': 'Reduce moisture immediately to maintain seed viability...',
-      'gap9Title': '9. Storage',
-      'gap9Desc': 'Store in well-ventilated, dry place',
+      'gap8Full':
+          '• Reduce moisture immediately, or within 24 hours after harvest, to no more than 12%\n• If using a dryer, keep the temperature at or below 42°C so that germination is not affected\n• Record the date, weather conditions, and drying temperature',
+
+      'gap9Title': 'Storage',
+      'gap9Desc': 'Store in a well-ventilated, dry place',
       'gap9Full':
-          'Keep area clean, use pallets, and separate from fertilizers...',
+          '• The storage area must be clean, well ventilated, and protected from moisture and pests\n• Stack seed on pallets and leave gaps so it can be sampled\n• Label each lot so it can be traced back\n• Keep seed storage strictly separate from fertilizer and hazardous materials',
     },
   };
 

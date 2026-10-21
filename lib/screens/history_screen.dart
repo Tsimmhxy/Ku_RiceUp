@@ -1,8 +1,8 @@
 // ไฟล์: lib/screens/history_screen.dart
 import 'package:flutter/material.dart';
 
-import '../data/translations.dart';
 import '../data/rice_information.dart';
+import '../data/translations.dart';
 import '../models/app_language.dart';
 import '../models/history_model.dart';
 
@@ -76,6 +76,17 @@ class HistoryScreen extends StatelessWidget {
                               width: 70,
                               height: 70,
                               fit: BoxFit.cover,
+                              cacheWidth:
+                                  200, // thumbnail ไม่ต้อง decode เต็มขนาด
+                              errorBuilder: (context, error, stackTrace) {
+                                return Container(
+                                  width: 70,
+                                  height: 70,
+                                  color: Colors.grey.shade300,
+                                  child: Icon(Icons.broken_image,
+                                      color: Colors.grey.shade500),
+                                );
+                              },
                             ),
                           ),
                           const SizedBox(width: 16),

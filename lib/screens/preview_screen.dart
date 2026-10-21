@@ -1,3 +1,4 @@
+// ไฟล์: lib/screens/preview_screen.dart
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import '../data/translations.dart';
 import '../models/app_language.dart';
 import 'result_screen.dart';
 
-class PreviewScreen extends StatelessWidget {
+class PreviewScreen extends StatefulWidget {
   final File image;
 
   const PreviewScreen({
@@ -14,10 +15,32 @@ class PreviewScreen extends StatelessWidget {
     required this.image,
   });
 
+  @override
+  State<PreviewScreen> createState() => _PreviewScreenState();
+}
+
+class _PreviewScreenState extends State<PreviewScreen> {
   static const Color primaryGreen = Color(0xFF2E7D32);
   static const Color riceGold = Color(0xFFD4AF37);
   static const Color creamBackground = Color(0xFFF8F4E9);
   static const Color cardColor = Color(0xFFFFFCF4);
+
+  // กันกดปุ่ม "เริ่มจำแนก" รัวๆ จนสร้างหน้าผลลัพธ์ซ้อนกันหลายหน้า
+  bool _navigating = false;
+
+  Future<void> _startClassify() async {
+    if (_navigating) return;
+    setState(() => _navigating = true);
+
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ResultScreen(image: widget.image),
+      ),
+    );
+
+    if (mounted) setState(() => _navigating = false);
+  }
 
   Widget buildLanguageButton() {
     return TextButton.icon(
@@ -87,9 +110,10 @@ class PreviewScreen extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(16),
                         child: Image.file(
-                          image,
+                          widget.image,
                           width: double.infinity,
                           fit: BoxFit.cover,
+                          cacheWidth: 1080, // ลดขนาดตอน decode
                         ),
                       ),
                     ),
@@ -136,16 +160,7 @@ class PreviewScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(18),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => ResultScreen(
-                              image: image,
-                            ),
-                          ),
-                        );
-                      },
+                      onPressed: _navigating ? null : _startClassify,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -171,9 +186,11 @@ class PreviewScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(18),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                      onPressed: _navigating
+                          ? null
+                          : () {
+                              Navigator.pop(context);
+                            },
                     ),
                   ),
                 ],

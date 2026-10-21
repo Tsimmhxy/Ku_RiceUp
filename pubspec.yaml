@@ -11,11 +11,14 @@ dependencies:
   image_picker: ^1.0.7
   image: ^4.1.3
   tflite_flutter: ^0.11.0
+  path_provider: ^2.1.0
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
@@ -23,3 +26,9 @@ flutter:
     - assets/labels.txt
     - assets/models/Custom_CNN_best_fp16.tflite
     - assets/images/
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/images/ku.png"
+  min_sdk_android: 21
